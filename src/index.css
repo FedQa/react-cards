@@ -2,6 +2,8 @@
   --main-bg-color: #2e0175;
   --text-color: #fff;
 
+  --card-bg-color: #343a46;
+
   --btn-bg-color: #383b3f;
   --btn-text-color: #fff;
 
@@ -27,6 +29,7 @@
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 body {
@@ -42,6 +45,8 @@ body {
 
     --btn-bg-color: #0e6be4;
     --btn-text-color: #29ae2b;
+
+    --card-bg-color: #ebedf0;
   }
 }
 
@@ -52,5 +57,7 @@ body {
 
     --btn-bg-color: #383b3f;
     --btn-text-color: #fff;
+
+    --card-bg-color: #343a46;
   }
 }

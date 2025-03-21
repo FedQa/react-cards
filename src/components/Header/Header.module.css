@@ -8,7 +8,7 @@
     box-shadow: 0 2px 8px 0 rgba(255, 255, 255, 0.6); 
 }
 
-.logoWrapper {
+.logo {
     display: flex;
     justify-content: center;
     align-items: center;
