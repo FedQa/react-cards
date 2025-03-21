@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    background-color: var(--main-bg-color);
+    justify-content: space-between;
+    box-shadow: 0 2px 8px 0 rgba(255, 255, 255, 0.6); 
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.title {
+    text-transform: capitalize;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 15px;
+    height: 50%;
+}

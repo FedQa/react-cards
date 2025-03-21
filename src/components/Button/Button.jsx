@@ -1,9 +1,14 @@
-import module from './Button.module.css'
+import className from "./Button.module.css";
 
 export const Button = (props) => {
-    const {
-        name
-    } = props;
+  const { name, isDisabled, isActive } = props;
 
-    return <button className={module.btn} onClick={props.onClick}>{name}</button>
-}
+  return (
+    <button 
+    className={isActive ? `${className.active} ${className.btn}` : className.btn} 
+    onClick={props.onClick} 
+    disabled={isDisabled}>
+      {name}
+    </button>
+  );
+};
