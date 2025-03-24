@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../../constants";
 import className from "./HomePage.module.css";
 import { CardList } from "../../components/CardList";
 import { Loader } from "../../components/Loader";
+import { useFetch } from "../../hooks/useFetch";
+import { API_URL } from "../../constants";
 
 export const HomePage = () => {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(`${API_URL}/react`);
-      const cards = await response.json();
-      setCards(cards);
-    }
+  const [getCards, isLoading, error] = useFetch(async(url) => {
+    const response = await fetch(`${API_URL}/${url}`);
+    const cards = await response.json();
+    setCards(cards);
+  });
 
-    fetchData();
+  useEffect(() => {
+    getCards("react");
   }, []);
 
   return (
     <div className={className.main}>
       HomePage
-      <Loader />
+      {isLoading && <Loader />}
+      {error && <p>{error}</p>}
       <CardList cards={cards} />
     </div>
   );
