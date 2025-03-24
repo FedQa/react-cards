@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../../constants";
 import className from "./HomePage.module.css";
 import { CardList } from "../../components/CardList";
+import { Loader } from "../../components/Loader";
 
 export const HomePage = () => {
   const [cards, setCards] = useState([]);
@@ -19,6 +20,7 @@ export const HomePage = () => {
   return (
     <div className={className.main}>
       HomePage
+      <Loader />
       <CardList cards={cards} />
     </div>
   );
