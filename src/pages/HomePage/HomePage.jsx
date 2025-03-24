@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Card } from "../../components/Card";
 import { API_URL } from "../../constants";
 import className from "./HomePage.module.css";
+import { CardList } from "../../components/CardList";
 
 export const HomePage = () => {
   const [cards, setCards] = useState([]);
@@ -19,9 +19,7 @@ export const HomePage = () => {
   return (
     <div className={className.main}>
       HomePage
-      {cards.map((card, index) => {
-        return <Card card={card} key={card.id} />;
-      })}
+      <CardList cards={cards} />
     </div>
   );
 };
