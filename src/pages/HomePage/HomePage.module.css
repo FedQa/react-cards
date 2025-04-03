@@ -1,3 +1,9 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .controls {
     width: 100%;
     max-width: 800px;
@@ -6,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 .inputContainer {
@@ -17,7 +24,25 @@
 
     .searchIcon {
         position: absolute;
-        top: 10px;
-        left: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+    }
+}
+
+.noCardsText {
+    font-size: 3em;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .controls {
+        flex-direction: column-reverse;
+    
+    }
+
+    .controls > * {
+        width: 100%;
     }
 }

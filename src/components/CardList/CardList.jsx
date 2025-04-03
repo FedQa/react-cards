@@ -5,8 +5,6 @@ import className from "./CardList.module.css";
 export const CardList = memo(({ cards }) => {
   return (
     <div className={className.wrapper}>
-      <h1>CardList</h1>
-
       <div className={className.cardList}>
         {cards.map((card) => {
           return (
