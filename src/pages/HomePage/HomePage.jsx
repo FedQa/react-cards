@@ -10,14 +10,17 @@ import { Select } from "../../components/Select";
 import { Pagination } from "../../components/Pagination/Pagination";
 
 export const HomePage = () => {
-  const [searchParams, setSearchParams] = useState('?_page=1&_per_page=10');
   const [activePage, setActivePage] = useState(1);
   const [cards, setCards] = useState({});
   const [input, setInput] = useState("");
   const [sortSelect, setSortSelect] = useState("");
+  const [pagesCountSelect, setPagesCountSelect] = useState(10);
   const mainRef = useRef();
   const [pagesLength, setPagesLength] = useState(0);
   const inputId = useId();
+
+  const [searchParams, setSearchParams] = useState(`?_page=1&_per_page=${pagesCountSelect}`);
+
 
   const [getCards, isLoading, error] = useFetch(async (url) => {
     const response = await fetch(`${API_URL}/${url}`);
@@ -37,15 +40,21 @@ export const HomePage = () => {
 
   const onSortSelectChangeHandler = (e) => {
     const value = e.target.value;
-
     setSortSelect(value);
-    setSearchParams(`?_page=1&_per_page=10&${value}`);
+    setSearchParams(`?_page=1&_per_page=${pagesCountSelect}&${value}`);
     console.log(sortSelect);
+  }
+
+  const onPagesCountSelectChangeHandler = (e) => {
+    const value = e.target.value;
+    setPagesCountSelect(value);
+    setSearchParams(`?_page=1&_per_page=${value}&${sortSelect}`);
+    console.log(value);
   }
 
   const onClickPage = (index) => {
     setActivePage(index);
-    setSearchParams(`?_page=${index}&_per_page=10`);
+    setSearchParams(`?_page=${index}&_per_page=${pagesCountSelect}&${sortSelect}`);
     mainRef.current.scrollIntoView({behavior: "smooth"});
   }
 
@@ -89,7 +98,7 @@ export const HomePage = () => {
           //TODO: opt group разделить на две группы level / complete
           optionValues={[
             {
-              name: "sort by",
+              name: "-- sort by --",
             },
             {
               value: "_sort=level",
@@ -108,6 +117,34 @@ export const HomePage = () => {
               name: "not completed"
             }
             ]}
+          />
+
+          <Select 
+          id="pagesCount-select"
+          name="pagesCount"
+          onChange={onPagesCountSelectChangeHandler}
+          optionValues={[
+            {
+              name: "-- cards per page --",
+            },
+            {
+              name: "5",
+              value: 5,
+            },
+            {
+              name: "10",
+              value: 10,
+            },
+            {
+              name: "20",
+              value: 20,
+            },
+
+            {
+              name: "40",
+              value: 40,
+            }
+          ]}
           />
       </div>
       {isLoading && <Loader />}
