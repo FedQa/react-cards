@@ -44,7 +44,7 @@ body {
     --text-color: #22084c;
 
     --btn-bg-color: #0e6be4;
-    --btn-text-color: #29ae2b;
+    --btn-text-color: #fff;
 
     --card-bg-color: #ebedf0;
   }
@@ -55,8 +55,8 @@ body {
     --main-bg-color: #22084c;
     --text-color: #fff;
 
-    --btn-bg-color: #383b3f;
-    --btn-text-color: #fff;
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57C4DC;
 
     --card-bg-color: #343a46;
   }

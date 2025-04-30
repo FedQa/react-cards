@@ -11,7 +11,6 @@ import { Pagination } from "../../components/Pagination/Pagination";
 
 export const HomePage = () => {
   const [activePage, setActivePage] = useState(1);
-  const [cards, setCards] = useState({});
   const [input, setInput] = useState("");
   const [sortSelect, setSortSelect] = useState("");
   const [pagesCountSelect, setPagesCountSelect] = useState(10);
@@ -21,17 +20,22 @@ export const HomePage = () => {
 
   const [searchParams, setSearchParams] = useState(`?_page=1&_per_page=${pagesCountSelect}`);
 
-
-  const [getCards, isLoading, error] = useFetch(async (url) => {
+  const {fetchData, data: cards, isLoading, error} = useFetch(async (url) => {
+    console.log("fetch")
     const response = await fetch(`${API_URL}/${url}`);
-    const cards = await response.json();
-    setCards(cards);
-    setPagesLength(cards.pages);
+    return await response.json();
   });
 
   useEffect(() => {
-    getCards(`react${searchParams}`);
+    console.log("effect 1")
+    fetchData(`react${searchParams}`);
   }, [searchParams]);
+
+  useEffect(() => {
+    if (cards && cards.pages) {
+    setPagesLength(cards.pages);
+    }
+  }, [cards]);
 
   const inputHandlerChange = (e) => {
     console.log(e.target.value);
@@ -43,37 +47,29 @@ export const HomePage = () => {
     setSortSelect(value);
     setSearchParams(`?_page=1&_per_page=${pagesCountSelect}&${value}`);
     console.log(sortSelect);
-  }
+  };
 
   const onPagesCountSelectChangeHandler = (e) => {
     const value = e.target.value;
     setPagesCountSelect(value);
     setSearchParams(`?_page=1&_per_page=${value}&${sortSelect}`);
     console.log(value);
-  }
+  };
 
   const onClickPage = (index) => {
     setActivePage(index);
     setSearchParams(`?_page=${index}&_per_page=${pagesCountSelect}&${sortSelect}`);
-    mainRef.current.scrollIntoView({behavior: "smooth"});
-  }
+    mainRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const getFilteredCards = () => {
-    if (!cards.data) return [];
+    if (!cards) return [];
 
     if (!input.trim()) return cards.data;
-
-    return cards.data ? cards.data.filter(
-      card => card.question.toLowerCase()
-      .includes(input.trim().toLocaleLowerCase())
-    ) : cards.filter(
-      card => card.question.toLowerCase()
-      .includes(input.trim().toLocaleLowerCase())
-    );
-  }
+    return cards.data.filter((card) => card.question.toLowerCase().includes(input.trim().toLocaleLowerCase()))
+  };
 
   const filteredCards = getFilteredCards();
-
 
   return (
     <div className={className.main} ref={mainRef}>
@@ -91,35 +87,34 @@ export const HomePage = () => {
             className={className.input}
           />
         </div>
-        <Select 
+        <Select
           id="sort-select"
           name="sortSelect"
           onChange={onSortSelectChangeHandler}
-          //TODO: opt group разделить на две группы level / complete
           optionValues={[
             {
               name: "-- sort by --",
             },
             {
               value: "_sort=level",
-              name:"level asc"
-            }, 
+              name: "level asc",
+            },
             {
               value: "_sort=-level",
               name: "level desc",
             },
             {
               value: "_sort=completed",
-              name: "completed"
+              name: "completed",
             },
             {
               value: "_sort=-completed",
-              name: "not completed"
-            }
-            ]}
-          />
+              name: "not completed",
+            },
+          ]}
+        />
 
-          <Select 
+        <Select
           id="pagesCount-select"
           name="pagesCount"
           onChange={onPagesCountSelectChangeHandler}
@@ -143,24 +138,16 @@ export const HomePage = () => {
             {
               name: "40",
               value: 40,
-            }
+            },
           ]}
-          />
+        />
       </div>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
-      {filteredCards.length > 0 ? 
-      <CardList cards={filteredCards} /> 
-      : 
-      <p className={className.noCardsText}>No cards...</p>}
+      {filteredCards.length > 0 ? <CardList cards={filteredCards} /> : <p className={className.noCardsText}>No cards...</p>}
 
       <div className={className.pagination}>
-        {filteredCards.length > 0 && 
-        <Pagination 
-        pages={pagesLength}
-        onClickPage={onClickPage}
-        activePage={activePage} />
-        }
+        {filteredCards.length > 0 && <Pagination pages={pagesLength} onClickPage={onClickPage} activePage={activePage} />}
       </div>
     </div>
   );

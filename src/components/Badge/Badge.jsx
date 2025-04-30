@@ -17,9 +17,5 @@ export const Badge = (props) => {
       badgeClass = classname.primary;
   }
 
-  return (
-    <div className={`${classname.badge} ${badgeClass}`}>
-    {props.children}
-    </div>
-  );
+  return <div className={`${classname.badge} ${badgeClass}`}>{props.children}</div>;
 };

@@ -25,14 +25,10 @@ export const Card = ({ card }) => {
   return (
     <div className={className.card}>
       <div className={className.badges}>
-        <Badge 
-        className={`${getStatus()}`}
-        >
-          Level: {card.level}
-        </Badge>
-        <Badge className={`${card.completed ? "success" : "alert" || "primary"}`}>
+        <Badge className={`${getStatus()}`}>Level: {card.level}</Badge>
+        <Badge className={`${card.completed ? "success" : "alert"}`}>
           {card.completed ? "Completed" : "Not compeleted"}
-        </Badge>
+          </Badge>
       </div>
 
       <h5 className={className.title}>{card.question}</h5>
