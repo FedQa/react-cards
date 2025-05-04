@@ -11,7 +11,7 @@ export const QuestionPage = () => {
   const navigate = useNavigate();
   const checkBoxId = useId();
   const [isChecked, setIsChecked] = useState(false);
-  const [item, setItem] = useState({});
+  const [card, setCard] = useState({});
   const cardId = useParams();
 
   useEffect(() => {
@@ -19,46 +19,34 @@ export const QuestionPage = () => {
   }, []);
 
 
-
-  const {
-    fetchData,
-    data: card,
-    isLoading,
-    error,
-  } = useFetch(async () => {
+  const {fetchData, isLoading} = useFetch(async () => {
     const response = await fetch(`${API_URL}/react/${cardId.id}`);
     const data = await response.json();
-    setItem(data);
+    setCard(data);
+    setIsChecked(data.completed);
     return data;
   });
 
-  useEffect(() => {
-    console.log("card")
-    card && setIsChecked(card.completed);
-  }, [card]);
-
-  const {
-    fetchData: updateCard,
-    isUpdating,
-  } = useFetch(async () => {
+  const { fetchData: updateCard, isLoading: isUpdating } = useFetch(async (newChecked) => {
+    console.log(newChecked);
     const response = await fetch(`${API_URL}/react/${cardId.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        completed: isChecked,
+        completed: newChecked,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     const data = await response.json();
-    setItem(data);
-    console.log(data);
+    setCard(data);
+    return data;
   });
 
   const checkboxHandler = async() => {
-    setIsChecked(!isChecked);
-    updateCard();
-    console.log(isChecked);
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    await updateCard(newChecked);
   }
 
   return (
@@ -68,8 +56,8 @@ export const QuestionPage = () => {
           <div className={className.cardLabels}>
             <div className={className.badges}>
               <Badge>Level: {card.level}</Badge>
-              <Badge className={`${card.completed ? "success" : "alert"}`}>
-                {card.completed ? "Completed" : "Not compeleted"}
+              <Badge className={`${isChecked ? "success" : "alert"}`}>
+                {isChecked ? "Completed" : "Not completed"}
               </Badge>
             </div>
             {card?.editDate && <span>Edited: {card.editDate}</span>}
