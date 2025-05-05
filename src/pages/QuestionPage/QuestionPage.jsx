@@ -5,7 +5,7 @@ import className from "./QuestionPage.module.css";
 import { useEffect, useId, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { API_URL } from "../../constants";
-import { Loader } from "../../components/Loader";
+import { Loader, SmallLoader } from "../../components/Loader";
 
 export const QuestionPage = () => {
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ export const QuestionPage = () => {
 
           <div className={className.resources}>
             <div>resources:</div>
-            {card.resources.map((resource, index) => {
+            {card.resources && card.resources.map((resource, index) => {
               return (
                 <a key={index} href={resource} target="_blank" rel="noreferrer">
                   {resource}
@@ -98,7 +98,8 @@ export const QuestionPage = () => {
               disabled={isUpdating}
             />
 
-            <label htmlFor={checkBoxId}>mark as checked</label>
+            <label htmlFor={checkBoxId}>mark as checked </label>
+            {isUpdating && <SmallLoader />}
           </div>
 
           <div className={className.buttonsContainer}>
