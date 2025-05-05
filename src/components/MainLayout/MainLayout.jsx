@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
 import classnames from "./MainLayout.module.css";
 import { Header } from "../Header/Header";
+import { ToastContainer } from "react-toastify";
 
 export const MainLayout = () => {
   const year = new Date().getFullYear();
   return (
+    <>
     <div className={classnames.mainLayout}>
       <Header />
       <div className={classnames.mainWrapper}>
@@ -16,5 +18,8 @@ export const MainLayout = () => {
         </footer>
       </div>
     </div>
+
+    <ToastContainer />
+    </>
   );
 };
