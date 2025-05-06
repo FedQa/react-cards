@@ -566,112 +566,22 @@
       "completed": false
     },
     {
-      "id": "ab5b",
-      "question": "324sdfdsfsdgsg",
-      "answer": "3sdfssdf",
-      "resources": "345sdfsdfdsf",
-      "level": "1",
-      "completed": false
-    },
-    {
-      "id": "5573",
-      "question": "3453235",
-      "answer": "sdfsfdsf",
-      "description": "sdfsfassad",
+      "id": "da98",
+      "question": "sdfs",
+      "answer": "fsdfsf",
+      "description": "sdfdsf",
       "resources": [
-        "adsasd",
-        " adfdafafa"
-      ],
-      "level": 2,
-      "completed": false
-    },
-    {
-      "id": "3f48",
-      "question": "324143sdfsf",
-      "answer": "134141sadfasf",
-      "description": "sfdsfsdf234",
-      "resources": [
-        "sdfsdfsf",
-        " sdfa;fldal;fa",
-        "fadfdaf"
+        "sdf"
       ],
       "level": 1,
       "completed": false
     },
     {
-      "id": "f1d1",
-      "question": "dsfdsf",
-      "answer": "dsfdsfs",
-      "description": "asdsadad234",
-      "resources": [
-        "dsfsfsf"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "55a1",
-      "question": "35354",
-      "answer": "gegegfe",
-      "description": "dfg345435",
-      "resources": [
-        "dfgdgdg"
-      ],
-      "level": 1,
-      "completed": true
-    },
-    {
-      "id": "872f",
-      "question": "32424",
-      "answer": "dsfsf",
-      "description": "23424",
-      "resources": [
-        "sdfsfdsfsf"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "f1b6",
-      "question": "3",
-      "answer": "4",
-      "description": "5",
-      "resources": [
-        "6"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "0746",
-      "question": "sdfdsf",
-      "answer": "sdfsdf",
-      "description": "adfa234524",
-      "resources": [
-        "sdfsfs"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "acfa",
-      "question": "dsfsf",
-      "answer": "sdfafda",
-      "description": "23424",
-      "resources": [
-        "sdfsfsf"
-      ],
-      "level": 1,
-      "completed": false
-    },
-    {
-      "id": "50f9",
-      "question": "выапыап4",
-      "answer": "452авыапыв",
-      "description": "ыавыва",
-      "resources": [
-        "423324ыа"
-      ],
+      "id": "014d",
+      "question": "sdfsf",
+      "answer": "asdad",
+      "description": "afadf",
+      "resources": [],
       "level": 1,
       "completed": false
     }
