@@ -8,11 +8,12 @@ import { API_URL } from "../../constants";
 
 const createCardAction = async (_prevState, formData) => {
     try {
+        await delayFn();
         const newCardQuestion = Object.fromEntries(formData);
         const resources = newCardQuestion.resources && newCardQuestion.resources.trim();
         const isClearForm = newCardQuestion.clearForm;
 
-        const response = await fetch(`${API_URL}/react`, {
+        const response = await fetch(`${API_URL}/react435234`, {
             method: 'POST',
             body: JSON.stringify({
                 question: newCardQuestion.question,
@@ -23,14 +24,23 @@ const createCardAction = async (_prevState, formData) => {
                 completed: false,
             }),
         });
-        const data = await response.json();
-        toast.success("New question is successfully created!");
-        await delayFn();
+
+        let data = null;
+
+        if (response.ok) {
+            data = await response.json();
+            toast.success("New question is successfully created!");
+        }
+        else {
+            throw new Error("error");
+        }
+
         return isClearForm ? {} : data;
     } 
     catch (error) {
-        toast.error();
+        toast.error("Bad request");
         console.log("error", error.message);
+        return {};
     }
 };
 
