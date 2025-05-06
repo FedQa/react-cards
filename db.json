@@ -22,7 +22,7 @@
         "https://react.dev/learn/writing-markup-with-jsx"
       ],
       "level": 2,
-      "completed": false,
+      "completed": true,
       "editDate": "03.02.2025, 20:25"
     },
     {
@@ -543,7 +543,7 @@
         "https://react.dev/blog/2021/06/08/the-plan-for-react-18"
       ],
       "level": 3,
-      "completed": false
+      "completed": true
     },
     {
       "id": "50",

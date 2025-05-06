@@ -4,6 +4,8 @@
 
   --card-bg-color: #343a46;
 
+  --green-color: #219679;
+
   --btn-bg-color: #383b3f;
   --btn-text-color: #fff;
 
@@ -45,6 +47,9 @@ body {
 
     --btn-bg-color: #0e6be4;
     --btn-text-color: #fff;
+
+    --green-color: #219679;
+
 
     --card-bg-color: #ebedf0;
   }

@@ -18,7 +18,10 @@ export const Header = () => {
           isActive
           onClick={() => navigate("/add-question")}
         ></Button>
-        <Button name="Login"></Button>
+        <Button 
+        name="Login"
+        onClick={() => navigate("login")}
+        ></Button>
       </div>
     </header>
   );
