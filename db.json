@@ -584,6 +584,51 @@
       "resources": [],
       "level": 1,
       "completed": false
+    },
+    {
+      "id": "1e8b",
+      "question": "reк",
+      "answer": "ку",
+      "description": "ку",
+      "resources": [],
+      "level": 1,
+      "completed": false
+    },
+    {
+      "id": "3910",
+      "question": "reк",
+      "answer": "ку",
+      "description": "ку",
+      "resources": [
+        "аыва",
+        " jsdfjsf"
+      ],
+      "level": 1,
+      "completed": false
+    },
+    {
+      "id": "264a",
+      "question": "sdfsf",
+      "answer": "dsfsdf",
+      "description": "sdfsf",
+      "resources": [
+        "sdfsf",
+        " sdfdsf"
+      ],
+      "level": 1,
+      "completed": false
+    },
+    {
+      "id": "c9dd",
+      "question": "Что такое React?",
+      "answer": "React — это библиотека для создания пользовательских интерфейсов.",
+      "description": "React — это JavaScript-библиотека, разработанная Facebook, которая используется для построения UI с компонентным подходом. React позволяет вам создавать пользовательские интерфейсы из отдельных частей, называемых компонентами.",
+      "resources": [
+        "https://react.dev",
+        "https://react.dev/reference/react"
+      ],
+      "level": 2,
+      "completed": false
     }
   ]
 }

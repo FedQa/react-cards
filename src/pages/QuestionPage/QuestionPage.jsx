@@ -103,7 +103,7 @@ export const QuestionPage = () => {
           </div>
 
           <div className={className.buttonsContainer}>
-            <Button name="Edit question" isDisabled={isUpdating} />
+            <Button name="Edit question" onClick={() => navigate(`/edit-question/${cardId.id}`)} isDisabled={isUpdating} />
 
             <Button name="Back" onClick={() => navigate("/")} isDisabled={isUpdating} />
           </div>
